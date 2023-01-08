@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Rad/t/io</title>
+</head>
+<body>
+  <img id="bg" src="http://localhost:8000/background.jpg" alt="background image">
+  <style>
+    #bg { position: fixed; top: 0; left: 0; }
+    .bgwidth { width: 100%; }
+    .bgheight { height: 100%; }
+  </style>
+  <audio src="http://localhost:8000/audio.mp3" id="my_audio" loop="loop"></audio>
+  <script type="text/javascript">
+    window.onload=function(){
+      document.getElementById("my_audio").play();
+    }
+  </script>
+  <script language="JavaScript" type="text/javascript" src="jquery-3.6.3.js">
+    $(window).load(function() {    
+      var theWindow = $(window),
+      $bg = $("#bg"),
+      aspectRatio = $bg.width() / $bg.height();	    			    		
+      function resizeBg() {		
+        if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+          $bg
+          .removeClass()
+          .addClass('bgheight');
+        } else {
+          $bg
+          .removeClass()
+          .addClass('bgwidth');
+        }					
+      }	                   			
+      theWindow.resize(resizeBg).trigger("resize");
+    });
+  </script>
+</body>
+</html>
